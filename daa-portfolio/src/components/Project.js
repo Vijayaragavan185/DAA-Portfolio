@@ -1,149 +1,57 @@
-import React, { useState } from 'react';
+import React from 'react';
+import { Slide } from 'react-slideshow-image';
+import 'react-slideshow-image/dist/styles.css';
 import './Project.css';
-import { motion } from 'framer-motion';
-import { FaChartLine, FaClock, FaRobot, FaArrowLeft, FaArrowRight } from 'react-icons/fa';
 
 function Project() {
-  const [currentSlide, setCurrentSlide] = useState(0);
-  
-  const slides = [
+  // Create slideshow content based on your PowerPoint presentation
+  const slideImages = [
     {
       title: 'Problem Statement',
-      content: 'In financial markets, identifying the period of maximum cumulative returns is crucial for optimal entry and exit points in trading.',
-      image: 'assets/problem-statement.jpg' // You'll need to add this image
+      description: 'The Maximum Subarray Problem involves finding the contiguous subarray within a one-dimensional array of numbers that has the largest possible sum. This is crucial in financial analysis for identifying optimal trading windows.',
+      url: 'assets/problem-statement.png'
     },
     {
-      title: 'Maximum Subarray Algorithm',
-      content: 'The algorithm efficiently finds the contiguous subarray within a one-dimensional array of numbers which has the largest sum.',
-      image: 'assets/algorithm.jpg'
+      title: 'Motivation & Applications',
+      description: 'This algorithm has direct applications in financial technology like Zerodha Streak momentum scanner, helping traders identify stock momentum patterns and determine optimal entry/exit points.',
+      url: 'assets/motivation.png'
     },
     {
-      title: 'Application to Trading',
-      content: 'By analyzing price fluctuations as an array of differences, we identify the period with maximum potential profit.',
-      image: 'assets/trading-app.jpg'
+      title: 'Implementation in Trading',
+      description: 'In trading platforms, the algorithm continuously processes price data for stocks, ranks them based on momentum strength, and presents top stocks to traders in a watchlist with mobile notifications.',
+      url: 'assets/trading-implementation.png'
     },
     {
-      title: 'Implementation',
-      content: 'Implemented Kadane\'s algorithm with O(n) time complexity, making it suitable for real-time market data analysis.',
-      image: 'assets/implementation.jpg'
+      title: 'Algorithm Implementation',
+      description: 'Using Kadane\'s algorithm with O(n) time complexity, the system tracks price changes as percentages and identifies the strongest continuous upward momentum period.',
+      url: 'assets/algorithm.png'
     },
     {
-      title: 'Results & Insights',
-      content: 'The algorithm accurately identified optimal trading windows in historical data, with a 72% success rate in test scenarios.',
-      image: 'assets/results.jpg'
+      title: 'Performance Analysis',
+      description: 'Kadane\'s Algorithm achieves O(n) linear time complexity compared to O(n²) for brute force approaches, making it suitable for real-time market data analysis of thousands of stocks.',
+      url: 'assets/performance.png'
     }
   ];
-
-  const nextSlide = () => {
-    setCurrentSlide((prev) => (prev === slides.length - 1 ? 0 : prev + 1));
-  };
-
-  const prevSlide = () => {
-    setCurrentSlide((prev) => (prev === 0 ? slides.length - 1 : prev - 1));
-  };
 
   return (
     <section id="project" className="project">
       <div className="container">
-        <motion.h2 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-        >
-          Real-World Application
-        </motion.h2>
+        <h2>Real-World Application</h2>
+        <h3>Maximum Subarray Algorithm in Trading Applications</h3>
         
-        <div className="project-subtitle">
-          <h3>Maximum Subarray Algorithm in Trading Applications</h3>
-        </div>
-        
-        <div className="project-content">
-          <motion.div 
-            className="project-info"
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <p>
-              In this project, I applied the Maximum Subarray algorithm to financial market data to identify optimal 
-              trading opportunities. This algorithm helps traders determine the best entry and exit points by finding 
-              periods of maximum cumulative returns.
-            </p>
-            
-            <div className="project-highlights">
-              <div className="highlight-card">
-                <div className="highlight-icon">
-                  <FaChartLine />
-                </div>
-                <h4>Market Analysis</h4>
-                <p>Identifies optimal trading windows in volatile markets</p>
-              </div>
-              
-              <div className="highlight-card">
-                <div className="highlight-icon">
-                  <FaClock />
-                </div>
-                <h4>Efficient Algorithm</h4>
-                <p>O(n) time complexity using Kadane's algorithm</p>
-              </div>
-              
-              <div className="highlight-card">
-                <div className="highlight-icon">
-                  <FaRobot />
-                </div>
-                <h4>Algorithmic Trading</h4>
-                <p>Powers automated decision support systems</p>
-              </div>
-            </div>
-          </motion.div>
-          
-          <motion.div 
-            className="project-slideshow"
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <div className="slideshow-container">
-              {slides.map((slide, index) => (
-                <div 
-                  key={index} 
-                  className={`slide ${index === currentSlide ? 'active' : ''}`}
-                >
-                  <div className="slide-content">
-                    <h4>{slide.title}</h4>
-                    <p>{slide.content}</p>
-                    <div className="slide-image">
-                      {/* Replace with actual image sources */}
-                      <div className="placeholder-image">
-                        <span>{slide.title}</span>
-                      </div>
-                    </div>
+        <div className="slideshow-container">
+          <Slide>
+            {slideImages.map((slideImage, index) => (
+              <div key={index} className="each-slide">
+                <div className="slide-content">
+                  <h4>{slideImage.title}</h4>
+                  <p>{slideImage.description}</p>
+                  <div className="slide-image" style={{'backgroundImage': `url(${slideImage.url})`}}>
                   </div>
                 </div>
-              ))}
-              
-              <div className="slideshow-controls">
-                <button className="slide-btn prev" onClick={prevSlide}>
-                  <FaArrowLeft />
-                </button>
-                <div className="slide-indicators">
-                  {slides.map((_, index) => (
-                    <span 
-                      key={index} 
-                      className={`indicator ${index === currentSlide ? 'active' : ''}`}
-                      onClick={() => setCurrentSlide(index)}
-                    />
-                  ))}
-                </div>
-                <button className="slide-btn next" onClick={nextSlide}>
-                  <FaArrowRight />
-                </button>
               </div>
-            </div>
-          </motion.div>
+            ))}
+          </Slide>
         </div>
       </div>
     </section>
