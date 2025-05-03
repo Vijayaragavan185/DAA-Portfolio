@@ -43,14 +43,14 @@
     overflow: hidden;
     margin: 0 auto;
     max-width: 800px;
-    height: 450px;
+    height: 500px;
     box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
     border: 1px solid rgba(100, 255, 218, 0.1);
   }
   
   .each-slide {
-    padding: 30px;
     height: 100%;
+    padding: 30px;
   }
   
   .slide-content {
@@ -60,7 +60,7 @@
   }
   
   .slide-content h4 {
-    font-size: 1.3rem;
+    font-size: 1.5rem;
     color: var(--accent-primary);
     margin-bottom: 15px;
   }
@@ -71,21 +71,26 @@
     color: var(--text-secondary);
   }
   
-  .slide-image {
+  /* For img tag approach */
+  .slide-image-content {
     flex: 1;
-    margin-top: 15px;
+    max-height: 350px;
+    object-fit: contain;
     border-radius: 8px;
-    overflow: hidden;
-    background-size: cover;
-    background-position: center;
     background-color: rgba(100, 255, 218, 0.05);
   }
   
-  /* React Slideshow Image Default Override Styles */
-  .react-slideshow-container {
-    height: 100%;
+  /* For background image approach */
+  .slide-image {
+    flex: 1;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 8px;
+    background-color: rgba(100, 255, 218, 0.05);
   }
   
+  /* React Slideshow control customization */
   .react-slideshow-container .nav {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 50%;
@@ -97,6 +102,7 @@
     cursor: pointer;
     color: var(--accent-primary);
     transition: all 0.3s ease;
+    z-index: 10;
   }
   
   .react-slideshow-container .nav:hover {
@@ -104,35 +110,27 @@
     transform: scale(1.1);
   }
   
-  .react-slideshow-container .nav svg {
-    width: 20px;
-    height: 20px;
-  }
-  
   .react-slideshow-container + ul.indicators {
-    display: flex;
-    justify-content: center;
     gap: 8px;
-    margin-top: 15px;
+    margin-top: 20px;
   }
   
-  .react-slideshow-container + ul.indicators li {
+  .react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
     width: 10px;
     height: 10px;
     border-radius: 50%;
-    background-color: var(--text-secondary);
-    cursor: pointer;
-    transition: all 0.3s ease;
+    background: var(--text-secondary);
+    opacity: 0.5;
   }
   
-  .react-slideshow-container + ul.indicators .active {
-    background-color: var(--accent-primary);
-    transform: scale(1.2);
+  .react-slideshow-container + ul.indicators .each-slideshow-indicator.active:before {
+    background: var(--accent-primary);
+    opacity: 1;
   }
   
   @media (max-width: 992px) {
     .slideshow-container {
-      height: 400px;
+      height: 450px;
     }
   }
   
@@ -144,7 +142,7 @@
       font-size: 1.2rem;
     }
     .slideshow-container {
-      height: 380px;
+      height: 400px;
     }
   }
   
