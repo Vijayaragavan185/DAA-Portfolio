@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import './LabExperiments.css';
 import { motion } from 'framer-motion';
+import ImagePopup from './ImagePopup'; // Import the popup component
 
 function LabExperiments() {
   const [activeExperiment, setActiveExperiment] = useState(null);
+  const [showPopup, setShowPopup] = useState(false);
+  const [popupImages, setPopupImages] = useState([]);
   
+  // Complete experiments array with all your DAA lab experiments
   const experiments = [
     { 
       id: '1a', 
@@ -89,11 +93,29 @@ function LabExperiments() {
       name: 'String Matching Algorithms', 
       description: 'Algorithms for finding occurrences of a pattern string within a main text string.',
       complexity: 'KMP: O(n+m) | Rabin-Karp: O(n+m) average'
-    },
+    }
   ];
 
   const handleCardClick = (id) => {
     setActiveExperiment(activeExperiment === id ? null : id);
+  };
+  
+  const handleLearnMore = (e, exp) => {
+    e.stopPropagation(); // Prevent card flip when clicking Learn More
+    
+    // Use the same two index page images for all experiments
+    setPopupImages([
+      { 
+        src: "/assets/index-page-1.jpg", 
+        alt: "Lab Experiment Index Page 1" 
+      },
+      { 
+        src: "/assets/index-page-2.jpg", 
+        alt: "Lab Experiment Index Page 2" 
+      }
+    ]);
+    
+    setShowPopup(true);
   };
 
   return (
@@ -124,7 +146,6 @@ function LabExperiments() {
                   <div className="exp-number">{exp.id}</div>
                   <h3>{exp.name}</h3>
                   <div className="algorithm-visual">
-                    {/* Algorithm visualization placeholder */}
                     <div className={`algo-animation animation-${exp.id.replace(/[a-z]/g, '')}`}></div>
                   </div>
                 </div>
@@ -134,13 +155,29 @@ function LabExperiments() {
                   <div className="complexity">
                     <span>Complexity: {exp.complexity}</span>
                   </div>
-                  <div className="view-details">Click for details</div>
+                  
+                  {/* Add Learn More button */}
+                  <button 
+                    className="learn-more-btn"
+                    onClick={(e) => handleLearnMore(e, exp)}
+                  >
+                    Learn More
+                  </button>
+                  
+                 
                 </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
+      
+      {/* Add the popup component */}
+      <ImagePopup 
+        isOpen={showPopup}
+        onClose={() => setShowPopup(false)}
+        images={popupImages}
+      />
     </section>
   );
 }

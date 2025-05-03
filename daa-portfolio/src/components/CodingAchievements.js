@@ -3,6 +3,7 @@ import './CodingAchievements.css';
 import { motion } from 'framer-motion';
 import { FaCode, FaLaptopCode, FaUserGraduate, FaTrophy } from 'react-icons/fa';
 
+
 function CodingAchievements() {
   // Updated categories based on your specific completed problems
   const categories = [
@@ -87,7 +88,7 @@ function CodingAchievements() {
           >
             <div className="achievement-image">
               <img 
-                src="/assets/daa-achievements.png" 
+                src={`${window.location.origin}/assets/daa-achievements.png`} 
                 alt="DAA Problem Solving Visualization" 
                 className="achievement-screenshot"
               />
