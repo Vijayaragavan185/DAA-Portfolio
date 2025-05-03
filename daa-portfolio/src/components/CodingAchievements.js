@@ -4,13 +4,19 @@ import { motion } from 'framer-motion';
 import { FaCode, FaLaptopCode, FaUserGraduate, FaTrophy } from 'react-icons/fa';
 
 function CodingAchievements() {
+  // Updated categories based on your specific completed problems
   const categories = [
-    { name: 'Sorting & Searching', count: 8 },
-    { name: 'Dynamic Programming', count: 7 },
-    { name: 'Graph Algorithms', count: 6 },
-    { name: 'Greedy Algorithms', count: 5 },
-    { name: 'Divide & Conquer', count: 4 }
+    { name: 'Searching Techniques', count: 5, easy: 3, medium: 1, hard: 1 },
+    { name: 'Sorting Techniques', count: 5, easy: 3, medium: 1, hard: 1 },
+    { name: 'Divide & Conquer', count: 5, easy: 3, medium: 1, hard: 1 },
+    { name: 'Greedy Algorithms', count: 3, easy: 3, medium: 0, hard: 0 },
+    { name: 'Dynamic Programming', count: 3, easy: 3, medium: 0, hard: 0 },
+    { name: 'Backtracking', count: 4, easy: 3, medium: 1, hard: 0 },
+    { name: 'Randomized Quicksort', count: 3, easy: 3, medium: 0, hard: 0 }
   ];
+
+  // Calculate total problems
+  const totalProblems = categories.reduce((sum, category) => sum + category.count, 0);
 
   return (
     <section id="coding" className="coding-achievements">
@@ -37,14 +43,14 @@ function CodingAchievements() {
                 <div className="stat-icon">
                   <FaCode />
                 </div>
-                <div className="stat-number">30+</div>
+                <div className="stat-number">{totalProblems}</div>
                 <div className="stat-title">DAA Problems Solved</div>
               </div>
             </div>
             
             <div className="achievement-description">
               <p>
-                I have successfully completed over 30 algorithmic challenges on our college coding platform, 
+                I have successfully completed {totalProblems} algorithmic challenges on our college coding platform, 
                 demonstrating proficiency in a wide range of algorithm design paradigms and problem-solving techniques.
               </p>
               <p>
@@ -56,7 +62,7 @@ function CodingAchievements() {
                 <div className="mini-stat">
                   <div className="mini-icon"><FaLaptopCode /></div>
                   <div className="mini-info">
-                    <span>5 Hard Problems</span>
+                    <span>3 Hard Problems</span>
                     <span>Solved complex algorithmic challenges</span>
                   </div>
                 </div>
@@ -70,8 +76,8 @@ function CodingAchievements() {
                 <div className="mini-stat">
                   <div className="mini-icon"><FaTrophy /></div>
                   <div className="mini-info">
-                    <span>3 Weekly Challenges</span>
-                    <span>Won coding competitions</span>
+                    <span>4 Medium Problems</span>
+                    <span>Tackled intermediate difficulty challenges</span>
                   </div>
                 </div>
               </div>
@@ -85,13 +91,14 @@ function CodingAchievements() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <div className="showcase-image">
-              <div className="placeholder-showcase">
-                <span>Coding Platform Achievements</span>
-                <p>Screenshot of completed DAA problems on college platform</p>
-              </div>
+            <div className="achievement-image">
+              <img 
+                src="/assets/daa-achievements.png" 
+                alt="DAA Problem Solving Visualization" 
+                className="achievement-screenshot"
+              />
               <div className="image-overlay">
-                <span>30+ Problems Solved</span>
+                <span>{totalProblems} Problems Solved</span>
               </div>
             </div>
             
@@ -107,7 +114,11 @@ function CodingAchievements() {
                 >
                   <div className="category-info">
                     <div className="category-name">{category.name}</div>
-                    <div className="category-count">{category.count} problems</div>
+                    <div className="category-details">
+                      <span className="difficulty easy">{category.easy} Easy</span>
+                      {category.medium > 0 && <span className="difficulty medium">{category.medium} Medium</span>}
+                      {category.hard > 0 && <span className="difficulty hard">{category.hard} Hard</span>}
+                    </div>
                   </div>
                   <div className="category-bar">
                     <div 
