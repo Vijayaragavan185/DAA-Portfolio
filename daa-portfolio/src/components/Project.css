@@ -71,7 +71,6 @@
     color: var(--text-secondary);
   }
   
-  /* For img tag approach */
   .slide-image-content {
     flex: 1;
     max-height: 350px;
@@ -80,52 +79,14 @@
     background-color: rgba(100, 255, 218, 0.05);
   }
   
-  /* For background image approach */
-  .slide-image {
-    flex: 1;
-    background-size: contain;
-    background-position: center;
-    background-repeat: no-repeat;
-    border-radius: 8px;
-    background-color: rgba(100, 255, 218, 0.05);
-  }
-  
   /* React Slideshow control customization */
   .react-slideshow-container .nav {
-    background: rgba(0, 0, 0, 0.3);
-    border-radius: 50%;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    color: var(--accent-primary);
-    transition: all 0.3s ease;
     z-index: 10;
   }
   
-  .react-slideshow-container .nav:hover {
-    background: rgba(0, 0, 0, 0.5);
-    transform: scale(1.1);
-  }
-  
-  .react-slideshow-container + ul.indicators {
-    gap: 8px;
-    margin-top: 20px;
-  }
-  
-  .react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background: var(--text-secondary);
-    opacity: 0.5;
-  }
-  
-  .react-slideshow-container + ul.indicators .each-slideshow-indicator.active:before {
-    background: var(--accent-primary);
-    opacity: 1;
+  /* Fix for the missing first slide issue */
+  .react-slideshow-container div[data-index="0"] {
+    display: block !important;
   }
   
   @media (max-width: 992px) {
