@@ -66,13 +66,7 @@ function CodingAchievements() {
                     <span>Solved complex algorithmic challenges</span>
                   </div>
                 </div>
-                <div className="mini-stat">
-                  <div className="mini-icon"><FaUserGraduate /></div>
-                  <div className="mini-info">
-                    <span>Top 15% in Class</span>
-                    <span>Based on problem-solving rate</span>
-                  </div>
-                </div>
+                
                 <div className="mini-stat">
                   <div className="mini-icon"><FaTrophy /></div>
                   <div className="mini-info">
