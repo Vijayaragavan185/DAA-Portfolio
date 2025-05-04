@@ -13,15 +13,15 @@ function Footer() {
           <div className="footer-contact">
             <div className="contact-item">
               <FaEnvelope />
-              <span>your.email@srmist.edu.in</span>
+              <span>vs6550@srmist.edu.in</span>
             </div>
           </div>
           
           <div className="footer-social">
-            <a href="#" className="social-icon" target="_blank" rel="noopener noreferrer">
+            <a href="https://github.com/Vijayaragavan185" className="social-icon" target="_blank" rel="noopener noreferrer">
               <FaGithub />
             </a>
-            <a href="#" className="social-icon" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.linkedin.com/in/vijayaragavan185/" className="social-icon" target="_blank" rel="noopener noreferrer">
               <FaLinkedin />
             </a>
           </div>
