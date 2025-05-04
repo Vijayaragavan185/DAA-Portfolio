@@ -129,6 +129,14 @@ function CodingAchievements() {
                   </motion.div>
                 ))}
               </div>
+              <div className="codeforces-proof">
+                <h4>Codeforces Submission Proof</h4>
+                <img 
+                  src={`${process.env.PUBLIC_URL}/assets/codeforces-proof.png`}
+                  alt="Codeforces submission history proof"
+                  className="proof-screenshot"
+                />
+              </div>
             </div>
             
             <div className="achievement-image">

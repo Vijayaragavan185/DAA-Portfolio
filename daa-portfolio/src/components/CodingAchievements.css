@@ -344,4 +344,22 @@
     font-size: 0.8rem;
   }
 }
+.codeforces-proof {
+  margin-top: 20px;
+  border-top: 1px solid rgba(100, 255, 218, 0.1);
+  padding-top: 20px;
+}
+
+.codeforces-proof h4 {
+  color: var(--accent-primary);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+.proof-screenshot {
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid rgba(100, 255, 218, 0.3);
+}
+
 
